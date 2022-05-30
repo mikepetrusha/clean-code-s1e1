@@ -1,3 +1,8 @@
+console.log(`Cамооценка: 45 pts
+             все пункты выполнены в порядке, указанном в задании.
+             каждый пункт оформлен в отдельном коммите.
+             изменения выпонялись в ветке clean-code-s1e1
+`);
 //Document is the DOM can be accessed in the console with document.window.
 // Tree is from the top, html, body, p etc.
 
@@ -33,20 +38,22 @@ var createNewTaskElement = function (taskString) {
     var deleteButtonImg = document.createElement("img");//delete button image
 
     label.innerText = taskString;
-    label.className = 'task label';
+    label.className = 'task-item__label';
 
     //Each elements, needs appending
     checkBox.type = "checkbox";
+    checkBox.className = "task-item__checkbox";
     editInput.type = "text";
-    editInput.className = "task text";
+    editInput.className = "task-item__text";
 
     editButton.innerText = "Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className = "edit-btn";
+    editButton.className = "btn btn_edit";
 
-    deleteButton.className = "delete-btn";
+    deleteButton.className = "btn btn_delete";
     deleteButtonImg.src = './remove.svg';
+    deleteButtonImg.className = "btn__delete-icon";
     deleteButton.appendChild(deleteButtonImg);
-    deleteButtonImg.className = "delete-icon";
+
 
     //and appending.
     listItem.appendChild(checkBox);
@@ -54,7 +61,7 @@ var createNewTaskElement = function (taskString) {
     listItem.appendChild(editInput);
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
-    listItem.classList.add('list-item');
+    listItem.classList.add('task-item');
     return listItem;
 }
 
@@ -85,8 +92,8 @@ var editTask = function () {
 
     var editInput = listItem.querySelector('input[type=text]');
     var label = listItem.querySelector("label");
-    var editBtn = listItem.querySelector(".edit-btn");
-    var containsClass = listItem.classList.contains("edit-mode");
+    var editBtn = listItem.querySelector(".btn_edit");
+    var containsClass = listItem.classList.contains("task-item_edit");
     //If class of the parent is .editmode
     if (containsClass) {
 
@@ -100,7 +107,7 @@ var editTask = function () {
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("edit-mode");
+    listItem.classList.toggle("task-item_edit");
 };
 
 
@@ -130,7 +137,7 @@ var taskCompleted = function () {
 
 var taskIncompleted = function () {
     console.log("Incomplete Task...");
-    //Mark task as incompleted.
+    //Mark task as incomplete.
     //When the checkbox is unchecked
     //Append the task list item to the #incompletedTasks.
     var listItem = this.parentNode;
@@ -157,8 +164,8 @@ var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
     console.log("bind list item events");
     //select ListItems children
     var checkBox = taskListItem.querySelector("input[type=checkbox]");
-    var editButton = taskListItem.querySelector("button.edit-btn");
-    var deleteButton = taskListItem.querySelector("button.delete-btn");
+    var editButton = taskListItem.querySelector(".btn_edit");
+    var deleteButton = taskListItem.querySelector(".btn_delete");
 
 
     //Bind editTask to edit button.
