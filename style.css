@@ -141,32 +141,38 @@
     width: 226px;
 }
 
-.delete-btn .delete-icon {
+.delete-btn,
+.delete-icon {
     height: 2em;
     transform: rotateZ(45deg);
     transition: transform 200ms ease-in;
 }
 
-.delete-btn .delete-icon:hover {
+.delete-btn,
+.delete-icon:hover {
     transform: rotateZ(0);
 }
 
 /* Completed */
-.task-list.completed .task.label {
+.task-list.completed,
+.task.label {
     text-decoration: line-through;
     color: #888;
 }
 
 /* Edit Task */
-.task-list .task.text {
+.task-list,
+.task.text {
     display: none;
 }
 
-.edit-mode .task.text {
+.edit-mode,
+.task.text {
     display: inline-block;
     width: 224px;
 }
 
-.edit-mode .task.label {
+.edit-mode,
+.task.label {
     display: none;
 }
